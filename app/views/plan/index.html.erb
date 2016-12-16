@@ -1,0 +1,7 @@
+<h1>Super plan lekcji xD</h1>
+
+<ul>
+<% @teachers.each do |node| %>
+  <li><%= node['name'][3..-1] %></li>
+<% end %>
+<ul>
