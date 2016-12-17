@@ -1,0 +1,18 @@
+<h1>Dodaj nowy plan</h1>
+
+  <%= form_tag action: 'add' do %>
+    <br>
+    <%= text_field_tag :url %>
+    <br>
+    <%= submit_tag "Dodaj"%>
+  <% end %>
+
+
+
+  <p>Cards: <%= Card.count %></p>
+  <p>Classrooms: <%= Classroom.count %></p>
+  <p>Groups: <%= Group.count %></p>
+  <p>Lessons: <%= Lesson.count %></p>
+  <p>Squads: <%= Squad.count %></p>
+  <p>Subjects: <%= Subject.count %></p>
+  <p>Teachers: <%= Teacher.count %></p>

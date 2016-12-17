@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216124924) do
+ActiveRecord::Schema.define(version: 20161217182242) do
 
   create_table "cards", force: :cascade do |t|
     t.integer  "day"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20161216124924) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "groups", [nil], name: "index_groups_on_teacher_id"
+  add_index "groups", ["squad_id"], name: "index_groups_on_squad_id"
 
   create_table "lessons", force: :cascade do |t|
     t.integer  "periodspercard"
