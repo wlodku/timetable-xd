@@ -1,13 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Planxd</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  	<title>Plan Lekcji CKZiU</title>
+  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  	<%= csrf_meta_tags %>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
 </head>
 <body>
-<%= yield %>
-
+	<header>
+		<nav class="top-nav white">
+			<span class="black-text" style="font-size: 20px; margin-left: 70px;">Plan Lekcji Klasy 2aT5</span>
+		</nav>
+		<div class="container">
+			<a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+				<i class="material-icons">menu</i>
+			</a>
+		</div>
+		<ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0px);">
+			<div class="logo" style="height: 200px;">
+				<a id="logo-container" href="www.ckziu.jaworzno.pl" class="brand-logo">
+					<img src="../../assets/images/logo_black.png" alt="CKZiU w Jaworznie" style="height: 150px; width: auto;margin-top: 25px; margin-left: 25px;">
+				</a>
+			</div>
+			<ul class="collapsible collapsible-accordion">
+				<li>
+					<div class="collapsible-header waves-effect" style="border-bottom: 1px solid #9e9e9e; border-top: 1px solid #9e9e9e;"><i class="material-icons">school</i><p>Nauczyciel</p></div>
+					<div class="collapsible-body">
+						<ul>
+							<% Teacher.all.each do |t| %>
+								<li class="lista"><%= t.name %></li>
+							<% end %>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header waves-effect" style="border-bottom: 1px solid #9e9e9e;"><i class="material-icons">group</i><p>Klasa</p></div>
+					<div class="collapsible-body">
+						<ul>
+							<% Squad.all.each do |s| %>
+								<li class="lista"><%= s.short %></li>
+							<% end %>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header waves-effect" style="border-bottom: 1px solid #9e9e9e;"><i class="material-icons">place</i><p>Sala</p></div>
+					<div class="collapsible-body">
+						<ul>
+							<% Classroom.all.each do |c| %>
+								<li class="lista"><%= c.short %></li>
+							<% end %>
+						</ul>
+					</div>
+				</li>
+			</ul>
+			<script type="text/javascript">
+				$(".button-collapse").sideNav();
+			</script>
+		</ul>
+	</header>
+	<main>
+		<!-- czesc z planem na tablety i wyzej -->
+		<div class="container szeroki">
+			<div class="row">
+				<div class="col l12 m12 hige-on-small-only">
+					<div class="card-panel wysoki">
+						<%= yield %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
 </body>
 </html>
