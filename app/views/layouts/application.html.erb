@@ -26,7 +26,8 @@
 		<ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0px);">
 			<div class="logo" style="height: 200px;">
 				<a id="logo-container" href="www.ckziu.jaworzno.pl" class="brand-logo">
-					<img src="../../assets/images/logo_black.png" alt="CKZiU w Jaworznie" style="height: 150px; width: auto;margin-top: 25px; margin-left: 25px;">
+					<%= image_tag "logo_black.png", style: "height: 150px; width: auto; margin-top: 25px; margin-left: 25px;" %>
+					<!-- <img src="../../assets/images/logo_black.png" alt="CKZiU w Jaworznie" style="height: 150px; width: auto;margin-top: 25px; margin-left: 25px;"> -->
 				</a>
 			</div>
 			<ul class="collapsible collapsible-accordion">
@@ -35,7 +36,7 @@
 					<div class="collapsible-body">
 						<ul>
 							<% Teacher.all.each do |t| %>
-								<li class="lista"><%= t.name %></li>
+								<li class="lista"><%= t.name.tr('_', '') %></li>
 							<% end %>
 						</ul>
 					</div>

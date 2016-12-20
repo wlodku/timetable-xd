@@ -3,7 +3,7 @@ class PlanController < ApplicationController
     # @teachers = Teacher.all
     # @doc = @doc.xpath("//teacher")
 
-    @cards = Card.all
+    @cards = Card.fromclass(1).fromday(2)
 
 
   end
