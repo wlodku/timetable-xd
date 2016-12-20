@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   get 'plan/index'
   get 'plan/new'
   get 'plan/add'
+  # get 'plan/teachersplan/(:id)'
   post 'plan/add'
-  # match ':controller(/:action(/:id))', :via => [:post, :get]
+  match ':controller(/:action(/:id))', :via => [:post, :get]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -3,9 +3,23 @@ class PlanController < ApplicationController
     # @teachers = Teacher.all
     # @doc = @doc.xpath("//teacher")
 
-    @cards = Card.fromclass(1).fromday(2)
+    # @cards = Card.fromclass(1).fromday(2)
+      # @cards = Card.fromteacher(13).fromday(1)
+      @cards = Card.fromclass(4)
 
+  end
+  def classroomsplan
+    id = params[:id]
+    @cards = Card.fromteacher(id)
+  end
+  def squadsplan
+    id = params[:id]
+    @cards = Card.fromclass(id)
+  end
 
+  def teachersplan
+    id = params[:id]
+    @cards = Card.fromteacher(id)   
   end
 
   def new
@@ -56,7 +70,7 @@ class PlanController < ApplicationController
 
     cards.each do |node|
       # Card.create(day: node['day'].to_i, period: node['period'].to_i, classroom_id: node['classroomids'].to_i, lesson_id: node['lessonid'].to_i)
-      Card.create(day: node['day'].to_i, period: node['period'].to_i, lesson_id: node['lessonid'][1..-1].to_i)
+      Card.create(day: node['day'].to_i, period: node['period'].to_i, lesson_id: node['lessonid'][1..-1].to_i, classroom_id: node['classroomids'][1..-1].to_i)
     end
 
     lessons.each do |node|
