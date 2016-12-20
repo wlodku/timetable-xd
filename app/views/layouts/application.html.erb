@@ -7,10 +7,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  	
+
   	<%= csrf_meta_tags %>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
 	<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
 
@@ -39,7 +39,7 @@
 						<ul>
 							<% Teacher.all.each do |t| %>
 								<li class="lista">
-									<%= link_to t.name.tr('_', ''), action: 'teachersplan', id: t.id, 'data-no-turbolink' => true %>
+									<%= link_to t.name.tr('_', ''), action: 'teachersplan', id: t.id %>
 								</li>
 							<% end %>
 						</ul>

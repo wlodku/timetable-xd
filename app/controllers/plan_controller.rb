@@ -10,7 +10,7 @@ class PlanController < ApplicationController
   end
   def classroomsplan
     id = params[:id]
-    @cards = Card.fromteacher(id)
+    @cards = Card.fromclassroom(id)
   end
   def squadsplan
     id = params[:id]
@@ -19,7 +19,7 @@ class PlanController < ApplicationController
 
   def teachersplan
     id = params[:id]
-    @cards = Card.fromteacher(id)   
+    @cards = Card.fromteacher(id)
   end
 
   def new
