@@ -1,4 +1,10 @@
 class PlanController < ApplicationController
+  before_action :clear_session
+
+  def clear_session
+    session[:title] = nil
+  end
+
   def index
     # @teachers = Teacher.all
     # @doc = @doc.xpath("//teacher")
@@ -8,18 +14,22 @@ class PlanController < ApplicationController
       @cards = Card.fromclass(4)
 
   end
+
   def classroomsplan
     id = params[:id]
     @cards = Card.fromclassroom(id)
+
   end
   def squadsplan
     id = params[:id]
     @cards = Card.fromclass(id)
+    session[:title] = Squad.find(id).short
   end
 
   def teachersplan
     id = params[:id]
     @cards = Card.fromteacher(id)
+    session[:title] = Teacher.find(id).name.tr('_', '')
   end
 
   def new

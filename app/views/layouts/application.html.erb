@@ -18,7 +18,7 @@
 <body>
 	<header>
 		<nav class="top-nav white">
-			<span class="black-text" style="font-size: 20px; margin-left: 70px;">Plan Lekcji Klasy 2aT5</span>
+			<span class="black-text" style="font-size: 20px; margin-left: 70px;">Plan lekcji <%= session[:title] %></span>
 		</nav>
 		<div class="container">
 			<a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
@@ -38,8 +38,8 @@
 					<div class="collapsible-body">
 						<ul>
 							<% Teacher.all.each do |t| %>
-								<li class="lista">
-									<%= link_to t.name.tr('_', ''), action: 'teachersplan', id: t.id %>
+								<li>
+									<%= link_to t.name.tr('_', ''), {action: 'teachersplan', id: t.id}, style: 'height: 30px; line-height: 30px; margin: 0; padding-left: 5px;' %>
 								</li>
 							<% end %>
 						</ul>
@@ -51,7 +51,7 @@
 						<ul>
 							<% Squad.all.each do |s| %>
 								<li class="lista">
-									<%= link_to s.short, action: 'squadsplan', id: s.id %>
+									<%= link_to s.short, {action: 'squadsplan', id: s.id}, style: 'height: 30px; line-height: 30px; margin: 0; padding-left: 5px;' %>
 								</li>
 							<% end %>
 						</ul>
@@ -63,7 +63,7 @@
 						<ul>
 							<% Classroom.all.each do |c| %>
 								<li class="lista">
-									<%= link_to c.short, action: 'classroomsplan', id: c.id %>
+									<%= link_to c.short, {action: 'classroomsplan', id: c.id}, style: 'height: 30px; line-height: 30px; margin: 0; padding-left: 5px;' %>
 								</li>
 							<% end %>
 						</ul>
