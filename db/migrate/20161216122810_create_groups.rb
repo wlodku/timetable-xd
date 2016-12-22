@@ -4,6 +4,7 @@ class CreateGroups < ActiveRecord::Migration
       t.string :name
       t.integer :divisiontag
       t.integer :squad_id
+      t.integer :teacher_id
       t.index :teacher_id
 
       t.timestamps null: false

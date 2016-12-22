@@ -23,6 +23,11 @@
 						<div class="dni">
 							<div class="kosteczki"><p class="dzien">Wt</p></div>
 							<% @cards_tuesday.each do |xd| %>
+								<div class="kosteczki">
+									<p class="inicjaly"> <%= xd.lesson.teacher.short %></p>
+									<p class="sala"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
+									<p class="przedmiot"> <%= xd.lesson.subject.short %></p>
+								</div>
 							<% end %>
 						</div>
 						<div class="dni">
@@ -38,11 +43,21 @@
 						<div class="dni">
 							<div class="kosteczki"><p class="dzien">Czw</p></div>
 							<% @cards_thursday.each do |xd| %>
+								<div class="kosteczki">
+									<p class="inicjaly"> <%= xd.lesson.teacher.short %></p>
+									<p class="sala"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
+									<p class="przedmiot"> <%= xd.lesson.subject.short %></p>
+								</div>
 							<% end %>
 						</div>
 						<div class="dni">
 							<div class="kosteczki"><p class="dzien">Pt</p></div>
 							<% @cards_friday.each do |xd| %>
+							<div class="kosteczki">
+									<p class="inicjaly"> <%= xd.lesson.teacher.short %></p>
+									<p class="sala"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
+									<p class="przedmiot"> <%= xd.lesson.subject.short %></p>
+								</div>
 							<% end %>
 						</div>
 
