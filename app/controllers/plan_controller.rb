@@ -18,12 +18,26 @@ class PlanController < ApplicationController
   def classroomsplan
     id = params[:id]
     @cards = Card.fromclassroom(id)
+    session[:title] = Classroom.find(id).short
+
+
 
   end
   def squadsplan
     id = params[:id]
     @cards = Card.fromclass(id)
     session[:title] = Squad.find(id).short
+
+    @cards_monday = @cards.fromday(1)
+    @cards_tuesday = @cards.fromday(2)
+    @cards_wednesday = @cards.fromday(3)
+    @cards_thursday = @cards.fromday(4)
+    @cards_friday = @cards.fromday(5)
+
+
+    @periods = ['6:55 - 7:40', '7:45 - 8:30', '8:40 - 9:25', '9:35 - 10:20', '10:30 - 11:15', '11:30 - 12:15', '12:25 - 13:10', '13:20 - 14:05', '14:15 - 15:00', '15:05 - 15:50', '15:55 - 16:40', '16:45 - 17:30']
+    @min = @cards.minimum(:period)
+    @max = @cards.maximum(:period)
   end
 
   def teachersplan

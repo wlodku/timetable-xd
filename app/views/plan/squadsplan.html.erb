@@ -1,14 +1,55 @@
 
-<ul>
-<% @cards.each do |c| %>
-  <li>Nr dnia: <%= c.day  %>,
-  Nr lekcji: <%= c.period  %>,
-  <%= c.lesson.teacher.name %>,
-  <%= c.lesson.group.name unless c.lesson.group.nil? %>,
-  <%= c.lesson.squad.short unless c.lesson.squad.nil? %>,
-  <%= c.lesson.subject.short %>,
-  <%= c.classroom.short unless c.classroom.nil? %>
-  </li>
-<% end %>
-</ul>
+						
+						<!-- sekcja z godzinami -->
+						<div id="godziny">
+							<div class="kosteczki"></div>
+							<% (@min..@max).each do |num| %>								
+								<div class="kosteczki">
+									<p class="numery"><%= num %></p>
+									<p class="numery" id="godzina"><%= @periods[num] %></p>
+								</div>
+							<% end %>
+						</div>
+						<div class="dni">
+							<div class="kosteczki"><p class="dzien">Pn</p></div>
+							<% @cards_monday.each do |xd| %>
+								<div class="kosteczki">
+									<p class="inicjaly"><%= xd.lesson.teacher.short %></p>
+									<p class="sala"><%= xd.classroom.short unless xd.classroom.nil? %></p>
+									<p class="przedmiot"><%= xd.lesson.subject.short %></p>
+								</div>
+							<% end %>
+						</div>
+						<div class="dni">
+							<div class="kosteczki"><p class="dzien">Wt</p></div>
+							<% @cards_tuesday.each do |xd| %>
+							<% end %>
+						</div>
+						<div class="dni">
+							<div class="kosteczki"><p class="dzien">Śr</p></div>
+							<% @cards_wednesday.each do |xd| %>
+								<div class="kosteczki">
+									<p class="inicjaly"> <%= xd.lesson.teacher.short %></p>
+									<p class="sala"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
+									<p class="przedmiot"> <%= xd.lesson.subject.short %></p>
+								</div>
+							<% end %>
+						</div>
+						<div class="dni">
+							<div class="kosteczki"><p class="dzien">Czw</p></div>
+							<% @cards_thursday.each do |xd| %>
+							<% end %>
+						</div>
+						<div class="dni">
+							<div class="kosteczki"><p class="dzien">Pt</p></div>
+							<% @cards_friday.each do |xd| %>
+							<% end %>
+						</div>
+
+
+
+						
+					
+
+						<!-- sekcja z planem / dniami -->
 
