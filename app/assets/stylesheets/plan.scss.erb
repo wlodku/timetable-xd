@@ -1,0 +1,129 @@
+// Place all the styles related to the Plan controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+header, main {
+	padding-left: 240px;
+}
+
+@media only screen and (max-width: 992px) {
+	header, main {
+		padding-left: 0px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	span {
+		margin-left: 50px;
+	}
+}
+
+a.button-collapse.top-nav.full {
+	line-height: 70px;
+}
+
+a.button-collapse.top-nav {
+	position: absolute;
+	text-align: center;
+	height: 25px;
+	width: 25px;
+	left: 5%;
+	top: 0;
+	float: none;
+	color: black;
+	font-size: 20px;
+	z-index: 2;
+}
+
+nav {
+	height: 65px;
+}
+
+i {
+	margin-top: 6px;
+}
+
+p.dzien {
+	margin-top: 25px;
+}
+
+.tall {
+	margin-top: 50px;
+	height: 560px;
+	padding: 0;
+}
+
+.fat {
+	width: 90%;
+}
+
+/*          time table drawing          */
+
+.hours {
+	height: 60px;
+	margin-left: 60px;
+
+	border-bottom: 1px solid black;	
+}
+
+.hourbox {
+	height: 100%;
+	float: left;
+	
+	border-right: 1px solid black;
+}
+
+.number {
+	margin: 0;
+	font-size: 18px; 
+	text-align: center;
+}
+
+#hour {
+	margin: 0;
+	font-size: 10px;
+	text-align: center;
+}
+
+.days {
+	height: 100px;
+	margin-left: 60px; 
+
+	border-bottom: 1px solid black;
+}
+.day {
+	height: 100px;
+	width: 60px;
+	text-align: center;
+	padding-top: 37px;
+	float: left;
+	
+	border-right: 1px solid black;	
+}
+
+.box {
+	float: left;	
+	padding: 6px;
+	height: 100%;
+
+	border-right: 1px solid black;
+}
+
+.teachername {
+	margin: 0;
+	font-size: 9px;
+	float: left;
+}
+
+.classroom {
+	margin: 0;
+	font-size: 9px;
+	float: right;
+}
+
+.subject {
+	margin: 0;
+	margin-top: 35px;
+	font-size: 15px;
+	text-align: center;
+}

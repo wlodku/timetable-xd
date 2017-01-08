@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217182242) do
+ActiveRecord::Schema.define(version: 20170104103708) do
 
   create_table "cards", force: :cascade do |t|
     t.integer  "day"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20161217182242) do
     t.string   "name"
     t.integer  "divisiontag"
     t.integer  "squad_id"
-    t.integer  "teacher_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -57,6 +56,17 @@ ActiveRecord::Schema.define(version: 20161217182242) do
   add_index "lessons", ["squad_id"], name: "index_lessons_on_squad_id"
   add_index "lessons", ["subject_id"], name: "index_lessons_on_subject_id"
   add_index "lessons", ["teacher_id"], name: "index_lessons_on_teacher_id"
+
+  create_table "settings", force: :cascade do |t|
+    t.string   "var",                   null: false
+    t.text     "value"
+    t.integer  "thing_id"
+    t.string   "thing_type", limit: 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "settings", ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true
 
   create_table "squads", force: :cascade do |t|
     t.string   "short"

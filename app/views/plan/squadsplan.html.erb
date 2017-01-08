@@ -1,70 +1,58 @@
-
-						
-						<!-- sekcja z godzinami -->
-						<div id="godziny">
-							<div class="kosteczki"></div>
-							<% (@min..@max).each do |num| %>								
-								<div class="kosteczki">
-									<p class="numery"><%= num %></p>
-									<p class="numery" id="godzina"><%= @periods[num] %></p>
-								</div>
-							<% end %>
-						</div>
-						<div class="dni">
-							<div class="kosteczki"><p class="dzien">Pn</p></div>
-							<% @cards_monday.each do |xd| %>
-								<div class="kosteczki">
-									<p class="inicjaly"><%= xd.lesson.teacher.short %></p>
-									<p class="sala"><%= xd.classroom.short unless xd.classroom.nil? %></p>
-									<p class="przedmiot"><%= xd.lesson.subject.short %></p>
-								</div>
-							<% end %>
-						</div>
-						<div class="dni">
-							<div class="kosteczki"><p class="dzien">Wt</p></div>
-							<% @cards_tuesday.each do |xd| %>
-								<div class="kosteczki">
-									<p class="inicjaly"> <%= xd.lesson.teacher.short %></p>
-									<p class="sala"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
-									<p class="przedmiot"> <%= xd.lesson.subject.short %></p>
-								</div>
-							<% end %>
-						</div>
-						<div class="dni">
-							<div class="kosteczki"><p class="dzien">Śr</p></div>
-							<% @cards_wednesday.each do |xd| %>
-								<div class="kosteczki">
-									<p class="inicjaly"> <%= xd.lesson.teacher.short %></p>
-									<p class="sala"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
-									<p class="przedmiot"> <%= xd.lesson.subject.short %></p>
-								</div>
-							<% end %>
-						</div>
-						<div class="dni">
-							<div class="kosteczki"><p class="dzien">Czw</p></div>
-							<% @cards_thursday.each do |xd| %>
-								<div class="kosteczki">
-									<p class="inicjaly"> <%= xd.lesson.teacher.short %></p>
-									<p class="sala"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
-									<p class="przedmiot"> <%= xd.lesson.subject.short %></p>
-								</div>
-							<% end %>
-						</div>
-						<div class="dni">
-							<div class="kosteczki"><p class="dzien">Pt</p></div>
-							<% @cards_friday.each do |xd| %>
-							<div class="kosteczki">
-									<p class="inicjaly"> <%= xd.lesson.teacher.short %></p>
-									<p class="sala"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
-									<p class="przedmiot"> <%= xd.lesson.subject.short %></p>
-								</div>
-							<% end %>
-						</div>
-
-
-
-						
-					
-
-						<!-- sekcja z planem / dniami -->
-
+<div class="hours">
+	<% (@min..@max).each do |num| %>								
+		<div class="hourbox" style="width: calc(100% / <%= Setting.max %>) !important">
+			<p class="number"> <%= num %> </p>
+			<p class="number" id="hour"> <%= @periods[num] %> </p>
+		</div>
+	<% end %>
+</div>
+<div class="day">Pn</div>
+<div class="days">
+	<% @cards_monday.each do |xd| %>
+		<div class="box" style="width: calc(100% / <%= Setting.max %>) !important">
+			<p class="teachername"> <%= xd.lesson.teacher.short %></p>
+			<p class="classroom"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
+			<p class="subject"> <%= xd.lesson.subject.short %></p>
+		</div>
+	<% end %>
+</div>
+<div class="day">Wt</div>
+<div class="days">
+	<% @cards_tuesday.each do |xd| %>
+		<div class="box" style="width: calc(100% / <%= Setting.max %>) !important">
+			<p class="teachername"> <%= xd.lesson.teacher.short %></p>
+			<p class="classroom"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
+			<p class="subject"> <%= xd.lesson.subject.short %></p>
+		</div>
+	<% end %>
+</div>
+<div class="day">Śr</div>
+<div class="days">
+	<% @cards_wednesday.each do |xd| %>
+		<div class="box" style="width: calc(100% / <%= Setting.max %>) !important">
+			<p class="teachername"> <%= xd.lesson.teacher.short %></p>
+			<p class="classroom"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
+			<p class="subject"> <%= xd.lesson.subject.short %></p>
+		</div>
+	<% end %>
+</div>
+<div class="day">Czw</div>
+<div class="days">
+	<% @cards_thursday.each do |xd| %>
+		<div class="box" style="width: calc(100% / <%= Setting.max %>) !important">
+			<p class="teachername"> <%= xd.lesson.teacher.short %></p>
+			<p class="classroom"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
+			<p class="subject"> <%= xd.lesson.subject.short %></p>
+		</div>
+	<% end %>
+</div>
+<div class="day">Pt</div>
+<div class="days">
+	<% @cards_friday.each do |xd| %>
+		<div class="box" style="width: calc(100% / <%= Setting.max %>) !important">
+			<p class="teachername"> <%= xd.lesson.teacher.short %></p>
+			<p class="classroom"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
+			<p class="subject"> <%= xd.lesson.subject.short %></p>
+		</div>
+	<% end %>
+</div>
