@@ -1,14 +1,2 @@
-<h1>Super plan lekcji xD lol</h1>
-<ul>
-<% @cards.each do |c| %>
-  <li>Nr dnia: <%= c.day  %>,
-  Nr lekcji: <%= c.period  %>,
-  <%= c.lesson.teacher.name %>,
-  <%= c.lesson.group.name unless c.lesson.group.nil? %>,
-  <%= c.lesson.squad.short unless c.lesson.squad.nil? %>,
-  <%= c.lesson.subject.short %>,
-  <%= c.classroom.short unless c.classroom.nil? %>
-  </li>
-<% end %>
-</ul>
+<h1>Weno se tu coś wybier gościu</h1>
 

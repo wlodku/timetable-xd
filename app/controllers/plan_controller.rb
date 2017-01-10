@@ -23,8 +23,9 @@ class PlanController < ApplicationController
     @periods = ['6:55 - 7:40', '7:45 - 8:30', '8:40 - 9:25', '9:35 - 10:20', '10:30 - 11:15', '11:30 - 12:15', '12:25 - 13:10', '13:20 - 14:05', '14:15 - 15:00', '15:05 - 15:50', '15:55 - 16:40', '16:45 - 17:30']
     @min = @cards.minimum(:period)
     @max = @cards.maximum(:period)
+    minXD = @min == 0 ? -1 : @min-1
 
-    Setting.max = @max
+    Setting.max = @max - minXD
   end
   def squadsplan
     id = params[:id]
@@ -40,8 +41,10 @@ class PlanController < ApplicationController
     @periods = ['6:55 - 7:40', '7:45 - 8:30', '8:40 - 9:25', '9:35 - 10:20', '10:30 - 11:15', '11:30 - 12:15', '12:25 - 13:10', '13:20 - 14:05', '14:15 - 15:00', '15:05 - 15:50', '15:55 - 16:40', '16:45 - 17:30']
     @min = @cards.minimum(:period)
     @max = @cards.maximum(:period)
+    @range = @min..@max
+    minXD = @min == 0 ? -1 : @min-1
 
-    Setting.max = @max
+    Setting.max = @max - minXD
   end
 
   def teachersplan
@@ -52,8 +55,9 @@ class PlanController < ApplicationController
     @periods = ['6:55 - 7:40', '7:45 - 8:30', '8:40 - 9:25', '9:35 - 10:20', '10:30 - 11:15', '11:30 - 12:15', '12:25 - 13:10', '13:20 - 14:05', '14:15 - 15:00', '15:05 - 15:50', '15:55 - 16:40', '16:45 - 17:30']
     @min = @cards.minimum(:period)
     @max = @cards.maximum(:period)
+    minXD = @min == 0 ? -1 : @min-1
 
-    Setting.max = @max
+    Setting.max = @max - minXD
   end
 
   def new
