@@ -13,7 +13,8 @@ module PlanHelper
 				output += 	"<div class='divided'>" if xd.lesson.group.divisiontag > 0
 				output +=  		"<p class='teachername'> #{ xd.lesson.teacher.short }</p>"
 				output += 		"<p class='classroom'> #{ xd.classroom.short unless xd.classroom.nil? } </p>"
-				output += 		"<p class='subject' class='#{}'> #{ xd.lesson.subject.short } #{xd.lesson.group.divisiontag}</p>"
+				output += 		"<p class='subject'> #{ xd.lesson.subject.short }</p>" if xd.lesson.group.divisiontag == 0
+				output += 		"<p class='subjecthalf'> #{ xd.lesson.subject.short }</p>" if xd.lesson.group.divisiontag > 0
 				output += 	"</div>" if xd.lesson.group.divisiontag > 0
 				unless cards[id+1].nil?
 					output += "</div>" if cards[id+1].period != cards[id].period
