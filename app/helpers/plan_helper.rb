@@ -7,14 +7,15 @@ module PlanHelper
 			if num == xd.period
 				nierysowal = false
 				unless cards[id-1].nil?
-					output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important; padding: #{xd.lesson.group.divisiontag == 0 ? 6 : 0}px;'>" if cards[id-1].period != cards[id].period
+					output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important; padding: #{xd.lesson.group.divisiontag == 0 ? 6 : 0}px; background-color: #{xd.lesson.teacher.color} !important;'>" if cards[id-1].period != cards[id].period
 				end
-				output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important'>" if cards[id-1].nil?
+				output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important; background-color: #{xd.lesson.teacher.color} !important;'>" if cards[id-1].nil?
 				output += 	"<div class='divided'>" if xd.lesson.group.divisiontag > 0
 				output +=  		"<p class='teachername'> #{ xd.lesson.teacher.short }</p>"
 				output += 		"<p class='classroom'> #{ xd.classroom.short unless xd.classroom.nil? } </p>"
 				output += 		"<p class='subject'> #{ xd.lesson.subject.short }</p>" if xd.lesson.group.divisiontag == 0
 				output += 		"<p class='subjecthalf'> #{ xd.lesson.subject.short }</p>" if xd.lesson.group.divisiontag > 0
+				# output +=		"<p class='group'> #{ xd.lesson.group.name } </p>" if xd.lesson.group.divisiontag > 0
 				output += 	"</div>" if xd.lesson.group.divisiontag > 0
 				unless cards[id+1].nil?
 					output += "</div>" if cards[id+1].period != cards[id].period
@@ -23,7 +24,41 @@ module PlanHelper
 			end			
 		end
 			if nierysowal
-			output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important'></div>"									
+			output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important'></div>"	
+
+			end
+		end
+		output.html_safe
+	end
+
+	def drawBoxTeacher(min, max, cards)
+		output = ''
+		(min..max).each do |num|
+			nierysowal = true
+			cards.each_with_index do |xd, id|
+			if num == xd.period
+				nierysowal = false
+
+				unless cards[id-1].nil?
+					output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important; padding #{xd.lesson.group.divisiontag == 0 ? 6 : 0}px; background-color: #{xd.lesson.teacher.color} !important;'>"
+				end
+				# output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important; padding #{xd.lesson.group.divisiontag == 0 ? 6 : 0}px;'>" if xd.id == 22749
+				output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important; background-color: #{xd.lesson.teacher.color} !important;'>" if cards[id-1].nil?
+				output += 	"<div class='divided'>" if xd.lesson.group.divisiontag > 0
+				output +=  		"<p class='teachername'> #{ xd.lesson.subject.short }</p>"
+				output += 		"<p class='classroom'> #{ xd.classroom.short unless xd.classroom.nil? } </p>"
+				output += 		"<p class='subject'> #{ xd.lesson.squads[0].short }</p>" if xd.lesson.group.divisiontag == 0
+				output += 		"<p class='subjecthalf'> #{ xd.lesson.squads[0].short }</p>" if xd.lesson.group.divisiontag > 0
+				output += 	"</div>" if xd.lesson.group.divisiontag > 0
+				unless cards[id+1].nil?
+					output += "</div>"
+				end
+				output += "</div>" if cards[id+1].nil?
+			end			
+		end
+			if nierysowal
+			output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important'></div>"	
+
 			end
 		end
 		output.html_safe

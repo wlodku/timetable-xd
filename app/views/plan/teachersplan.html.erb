@@ -7,56 +7,22 @@
 	<% end %>
 </div>
 <div class="day">Pn</div>
-<div class="days">
-	<% (@min..@max).each do |num| %>
-		<% nierysowal = true %>	
-		<% @cards_monday.each do |xd| %>
-			<% if num == xd.period %>
-				<% nierysowal = false %>
-				<div class="box" style="width: calc(100% / <%= Setting.max %>) !important">
-					<p class="teachername"> <%= xd.lesson.subject.short %></p>
-					<p class="classroom"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
-					<p class="subject"></p>
-				</div>			
-			<% end %>			
-		<% end %>
-		<% if nierysowal%>
-			<div class="box" style="width: calc(100% / <%= Setting.max %>) !important">					
-				<%= num %>
-			</div>
-		<% end %>
-	<% end %>
+<div class="days" style="border-top: 1px solid black;">
+	<%= drawBoxTeacher(@min, @max, @cards_monday) %>
 </div>
 <div class="day">Wt</div>
 <div class="days">
-	<% (@min..@max).each do |num| %>
-		<% nierysowal = true %>	
-		<% @cards_tuesday.each do |xd| %>
-			<% if num == xd.period %>
-				<% nierysowal = false %>
-				<div class="box" style="width: calc(100% / <%= Setting.max %>) !important">
-					<p class="teachername"> <%= xd.lesson.subject.short %></p>
-					<p class="classroom"> <%= xd.classroom.short unless xd.classroom.nil? %></p>
-					<p class="subject"> <%= xd.squad.short %></p>
-				</div>			
-			<% end %>			
-		<% end %>
-		<% if nierysowal%>
-			<div class="box" style="width: calc(100% / <%= Setting.max %>) !important">					
-				<%= num %>
-			</div>
-		<% end %>
-	<% end %>
+	<%= drawBoxTeacher(@min, @max, @cards_tuesday) %>
 </div>
 <div class="day">Śr</div>
 <div class="days">
-	
+	<%= drawBoxTeacher(@min, @max, @cards_wednesday) %>
 </div>
 <div class="day">Czw</div>
 <div class="days">
-	
+	<%= drawBoxTeacher(@min, @max, @cards_thursday) %>
 </div>
 <div class="day">Pt</div>
 <div class="days">
-	
+	<%= drawBoxTeacher(@min, @max, @cards_friday) %>
 </div>

@@ -3,7 +3,8 @@ class Card < ActiveRecord::Base
   belongs_to :classroom
 
 
-  scope :fromclass, -> (id) {joins(:lesson).where('lessons.squad_id = ?', id)}
+  # scope :fromclass, -> (id) {joins(:lesson => :squad).where('lessons.lesson_squads.squad.id = ?', id)}
+  scope :fromclass, -> (id) {joins(:lesson => :squads).where(:squads => {:id => id})}
   scope :fromday, -> (nr) {where(day: nr-1).order(period: :asc)}
 
   scope :fromteacher, -> (id) {joins(:lesson).where('lessons.teacher_id = ?', id)}
