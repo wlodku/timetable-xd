@@ -32,7 +32,7 @@ $(function() {
     	var devides = $(this).find('.divided');
     	var counter = $(this).find('.divided').length;
     	if(counter == 1)
-    		counter = 2;
+    		counter = 1;
     	
 
     	devides.each(function(){
