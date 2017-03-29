@@ -20,11 +20,18 @@ class PlanController < ApplicationController
     @cards = Card.fromclassroom(id)
     session[:title] = Classroom.find(id).short
 
+    @cards_monday = @cards.fromday(1)
+    @cards_tuesday = @cards.fromday(2)
+    @cards_wednesday = @cards.fromday(3)
+    @cards_thursday = @cards.fromday(4)
+    @cards_friday = @cards.fromday(5)
+
     @periods = ['6:55 - 7:40', '7:45 - 8:30', '8:40 - 9:25', '9:35 - 10:20', '10:30 - 11:15', '11:30 - 12:15', '12:25 - 13:10', '13:20 - 14:05', '14:15 - 15:00', '15:05 - 15:50', '15:55 - 16:40', '16:45 - 17:30']
     @min = @cards.minimum(:period)
     @max = @cards.maximum(:period)
+    @range = @min..@max
     minXD = @min == 0 ? -1 : @min-1
-
+    # @max = 7
     Setting.max = @max - minXD
   end
   def squadsplan
@@ -69,17 +76,24 @@ class PlanController < ApplicationController
   end
 
   def new
-
+    # unless user_signed_in?
+    #   redirect_to action: 'index'
+    # end
   end
 
   def add
+    # unless user_signed_in?
+    #   redirect_to action: 'index'
+    # end
+  
     Card.delete_all
     Classroom.delete_all
     Group.delete_all
     Lesson.delete_all
     Squad.delete_all
     Subject.delete_all
-    Teacher.delete_all
+    Teacher.delete_all  
+    LessonSquad.delete_all
 
     # url = params[:url]
     url = 'https://dl.dropbox.com/s/rc0t83swz5uqsdk/planxml2012.xml'
@@ -112,6 +126,7 @@ class PlanController < ApplicationController
 
     classrooms.each do |node|
       Classroom.create(id: node['id'][1..-1].to_i, short: node['short'])
+      # node['classroomids'].split(",").each {|c| c.classrooms << Classroom.find(c[1..-1].to_i)} 
     end
 
     cards.each do |node|

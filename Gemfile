@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'rails-settings-cached'
 
 gem "sass_rails_patch", "~> 0.0.1"
+
+gem "devise"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

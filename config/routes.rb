@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'plan/index'
   get 'plan/new'
   get 'plan/add'

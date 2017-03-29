@@ -64,18 +64,19 @@ module PlanHelper
 	def drawBoxTeacher(min, max, cards)
 		output = ''
 		(min..max).each do |num|
-			if cards.any? {|c| c.period == num }
+			if cards.any? { |c| c.period == num }
 				card = cards.fromperiod(num)
 				subjects = card.collect {|c| c.lesson.subject.short }
 				squads = card.first.lesson.squads.collect {|s| s.short}
-				classroom = card.first.classroom {|k| k.short}
+				classroom = card.first.classroom.short unless card.first.classroom.nil?
 				color = card.first.lesson.teacher.color
+				group = card.first.lesson.group.name
 				
 				output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important; background-color: #{ color } !important'>"
 				output += 	"<p class='subject'> #{squads.join(" ") unless squads.nil? }"
-				output += 	"<br>"+subjects.join(" ")
-				output += 	"</p>"
-				output +=	"<p class='classroom'> #{ classroom.join(" ") unless classroom.nil? }"
+				output += 	"<br>"+subjects.join(" ")+"</p>"
+				output +=	"<p class='classroom'> #{ classroom unless classroom.nil? }</p>"
+				output +=	"<p class='group'> #{ group }</p>"
 				output += "</div>"
 			else
 				output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important;'></div>"
@@ -83,6 +84,32 @@ module PlanHelper
 			
 		end
 		
+		output.html_safe
+
+	end
+
+	def drawBoxRoom(min, max, cards)
+		output = ''
+		(min..max).each do |num|
+			if cards.any? { |c| c.period == num }
+				card = cards.fromperiod(num)
+				subjects = card.collect {|c| c.lesson.subject.short }
+				squads = card.first.lesson.squads.collect {|s| s.short}
+				color = card.first.lesson.teacher.color
+				group = card.first.lesson.group.name
+				teacher = card.first.lesson.teacher.short
+
+				output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important; background-color: #{ color } !important'>"
+				output += 	"<p class='subject'> #{squads.join(" ") unless squads.nil? }"
+				output += 	"<br>"+teacher+"</p>"
+				output +=	"<p class='classroom'> #{  }</p>"
+				output +=	"<p class='group'> #{ group }</p>"
+				output += "</div>"
+			else
+				output += "<div class='box' style='width: calc(100% / #{ Setting.max }) !important;'></div>"
+			end
+		end
+
 		output.html_safe
 
 	end

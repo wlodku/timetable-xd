@@ -29,7 +29,24 @@
 <body>
 	<header>
 		<nav class="top-nav white">
-			<span class="black-text" style="font-size: 20px; margin-left: 70px;">Plan lekcji <%= session[:title] %></span>
+			<div class="black-text" style="font-size: 20px; margin-left: 70px;">Plan lekcji <%= session[:title] %>
+			
+
+			<% if user_signed_in? %>
+				<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'black-text;' %>
+			<% else %>	
+				Wylogowany
+			<% end %> 
+			</div>
+
+
+			<% if notice %>
+				<%= notice %>
+			<% end %>
+
+			<% if alert %>
+				<%= notice %>
+			<% end %>
 		</nav>
 		<div class="container">
 			<a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
@@ -81,7 +98,8 @@
 					</div>
 				</li>
 			</ul>
-			
+			<br>
+			<div class="chip centered">Aktualizacja: <%= Card.last.updated_at.strftime("%d/%m/%Y") %></div>
 		</ul>
 
 	</header>
