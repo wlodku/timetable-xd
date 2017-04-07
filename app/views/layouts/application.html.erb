@@ -29,24 +29,27 @@
 <body>
 	<header>
 		<nav class="top-nav white">
-			<div class="black-text" style="font-size: 20px; margin-left: 70px;">Plan lekcji <%= session[:title] %>
-			
+			<div class="container">
+				<div class="black-text" style="font-size: 20px;">Plan lekcji <%= session[:title] %>
+				
+				<div class="login">
+					<% if user_signed_in? %>
+						<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'black-text;' %>
+					<% else %>	
+						Zaloguj się
+					<% end %> 
+					</div>
 
-			<% if user_signed_in? %>
-				<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'black-text;' %>
-			<% else %>	
-				Wylogowany
-			<% end %> 
+
+					<% if notice %>
+						<%= notice %>
+					<% end %>
+
+					<% if alert %>
+						<%= notice %>
+					<% end %>
+				</div>
 			</div>
-
-
-			<% if notice %>
-				<%= notice %>
-			<% end %>
-
-			<% if alert %>
-				<%= notice %>
-			<% end %>
 		</nav>
 		<div class="container">
 			<a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
